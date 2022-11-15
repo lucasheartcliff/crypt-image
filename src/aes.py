@@ -7,7 +7,6 @@ import os.path
 from src.string_utils import bytes_to_string
 from os import listdir
 from os.path import isfile, join
-import time
 
 
 class Encryptor:
