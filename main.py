@@ -1,25 +1,25 @@
-#!/usr/bin/env python
-# coding:UTF-8
+"""!/usr/bin/env python
+coding:UTF-8
 
-# Usage:
-#   main.py encode -i <input> -o <output> -f <file>
-#   main.py decode -i <input> -o <output>
+Usage:
+  main.py encode -i <input> -o <output> -f <file>
+  main.py decode -i <input> -o <output>
 
-# Options:
-#   -h, --help                Show this help
-#   --version                 Show the version
-#   -f,--file=<file>          File to hide
-#   -i,--in=<input>           Input image (carrier)
-#   -o,--out=<output>         Output image (or extracted file)
-
+Options:
+  -h, --help                Show this help
+  --version                 Show the version
+  -f,--file=<file>          File to hide
+  -i,--in=<input>           Input image (carrier)
+  -o,--out=<output>         Output image (or extracted file)
+"""
 
 import docopt
 import cv2
-from steganography import Steganography
+from src.steganography import Steganography
 
 
 def main():
-    args = docopt.docopt(__doc__, version="0.2")
+    args = docopt.docopt(__doc__)
     in_f = args["--in"]
     out_f = args["--out"]
     in_img = cv2.imread(in_f)
