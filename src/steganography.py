@@ -8,25 +8,25 @@ Usage:
 
 Options:
   -h, --help                Show this help
-  --version                 Show the version
   -f,--file=<file>          File to hide
   -i,--in=<input>           Input image (carrier)
   -o,--out=<output>         Output image (or extracted file)
 """
 
-import cv2
 import numpy as np
-from .aes import Encryptor
-from .string_utils import string_to_bytes, bytes_to_string
+from .cryptography import Cryptography
+
 
 class SteganographyException(Exception):
     pass
 
 
 class Steganography():
-    def __init__(self, im, key: str):
+    crypto: Cryptography
+
+    def __init__(self, im, crypto):
         self.image = im
-        self.enc = Encryptor(key)
+        self.crypto = crypto
         self.height, self.width, self.nbchannels = im.shape
         self.size = self.width * self.height
 
@@ -108,27 +108,29 @@ class Steganography():
         return binval
 
     def encode_text(self, text):
-        txt = self.enc.encrypt(text)
-        print(txt)
-        l = len(txt)
-        # Length coded on 2 bytes so the text size can be up to 65536 bytes long
-        binl = self.binary_value(l, 16)
-        self.put_binary_value(binl)  # Put text length coded on 4 bytes
-        for char in txt:  # And put all the chars
-            c = ord(char)
-            self.put_binary_value(self.byteValue(c))
-        return self.image
+        enc_data = self.crypto.encrypt(text)
+        return self.encode_binary(enc_data)
+        # l = len(txt)
+        # # Length coded on 2 bytes so the text size can be up to 65536 bytes long
+        # binl = self.binary_value(l, 16)
+        # self.put_binary_value(binl)  # Put text length coded on 4 bytes
+        # for char in txt:  # And put all the chars
+        #     c = ord(char)
+        #     self.put_binary_value(self.byteValue(c))
+        # return self.image
 
     def decode_text(self):
-        ls = self.read_bits(16)  # Read the text size in bytes
-        l = int(ls, 2)
-        i = 0
-        unhideTxt = ""
-        while i < l:  # Read all bytes of the text
-            tmp = self.read_byte()  # So one byte
-            i += 1
-            unhideTxt += chr(int(tmp, 2))  # Every chars concatenated to str
-        return unhideTxt
+        enc_text = self.decode_binary()
+        return self.crypto.decrypt(enc_text)
+        # ls = self.read_bits(16)  # Read the text size in bytes
+        # l = int(ls, 2)
+        # i = 0
+        # unhideTxt = ""
+        # while i < l:  # Read all bytes of the text
+        #     tmp = self.read_byte()  # So one byte
+        #     i += 1
+        #     unhideTxt += chr(int(tmp, 2))  # Every chars concatenated to str
+        # return unhideTxt
 
     def encode_image(self, imtohide):
         w = imtohide.width
@@ -178,6 +180,4 @@ class Steganography():
         output = b""
         for i in range(l):
             output += bytearray([int(self.read_byte(), 2)])
-        out = bytes_to_string(output)
-        print(out,output)
-        return self.enc.decrypt(out)
+        return output

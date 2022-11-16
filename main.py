@@ -8,7 +8,6 @@ Usage:
 
 Options:
   -h, --help                Show this help
-  --version                 Show the version
   -f,--file=<file>          File to hide
   -k,--key=<key>            Key to encrypt or decrypt file content
   -i,--in=<input>           Input image (carrier)
@@ -17,6 +16,7 @@ Options:
 
 import docopt
 import cv2
+from src.cryptography import Cryptography
 from src.steganography import Steganography
 
 def main():
@@ -28,9 +28,9 @@ def main():
     
     in_img = cv2.imread(in_f)
     
-    key = open(key_f, "rb").read()
-    print(key)
-    steg = Steganography(in_img, key)
+    key = open(key_f, "r").read()
+    crypto = Cryptography(key)
+    steg = Steganography(in_img, crypto)
     lossy_formats = ["jpeg", "jpg"]
 
     if args['encode']:
@@ -45,8 +45,8 @@ def main():
         cv2.imwrite(out_f, res)
 
     elif args["decode"]:
-        raw = steg.decode_binary()
-        with open(out_f, "wb") as f:
+        raw = steg.decode_text()
+        with open(out_f, "w") as f:
             f.write(raw)
 
 
