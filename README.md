@@ -37,5 +37,5 @@ python3 decode -i <input> -o <output> -k <key>
 Example
 
 ```bash
-python3.6  main.py decode -i output.png -o text_out.txt -k example/key.file
+python3  main.py decode -i output.png -o text_out.txt -k example/key.file
 ```
