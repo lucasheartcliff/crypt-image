@@ -31,7 +31,7 @@ python3 main.py encode -i example/th.jpeg -o output.jpg -f example/test_txt -k e
 ## Decode Usage
 
 ```bash
-python3 decode -i <input> -o <output> -k <key>
+python3 main.py decode -i <input> -o <output> -k <key>
 ```
 
 Example
