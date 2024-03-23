@@ -8,7 +8,9 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
-            "args": ["encode  -i th.jpeg -o output.jpg -f test_txt -k key.file"],
+            "args": [
+                "encode -i example/encode_image.jpg -o example/decode_image.png -f example/content.txt -k example/rsa_example.key"
+            ],
             "program": "main.py",
             "console": "integratedTerminal",
             "justMyCode": true
