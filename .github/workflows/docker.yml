@@ -1,0 +1,33 @@
+name: Docker Build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/Dockerfile"
+      - "frontend/Dockerfile"
+      - "docker-compose.yml"
+      - "backend/requirements.txt"
+      - "frontend/package.json"
+  pull_request:
+    branches: [main]
+    paths:
+      - "backend/Dockerfile"
+      - "frontend/Dockerfile"
+      - "docker-compose.yml"
+      - "backend/requirements.txt"
+      - "frontend/package.json"
+
+jobs:
+  docker-build:
+    name: Validate Docker Images
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build backend image
+        run: docker build -t crypt-image-backend ./backend
+
+      - name: Build frontend image
+        run: docker build -t crypt-image-frontend ./frontend

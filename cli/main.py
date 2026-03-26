@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding:UTF-8
-"""main.py
+"""crypt-image CLI
 
 Usage:
   main.py encode -i <input> -o <output> -f <file> -k <key>
@@ -16,10 +16,14 @@ Options:
 
 import os
 import sys
+
+# Allow imports from project root
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+
 import docopt
 import cv2
-from src.cryptography import Cryptography, IntegrityError
-from src.steganography import Steganography
+from backend.app.core.cryptography import Cryptography, IntegrityError
+from backend.app.core.steganography import Steganography
 
 
 def print_progress(current: int, total: int) -> None:
@@ -36,7 +40,6 @@ def main():
     out_f = args["--out"]
     key_f = args["--key"]
 
-    # Validate input files
     if not os.path.isfile(in_f):
         print(f"Error: Input file '{in_f}' not found.")
         sys.exit(1)
@@ -62,7 +65,6 @@ def main():
             print(f"Error: File '{file_f}' not found.")
             sys.exit(1)
 
-        # Handle lossy format conversion
         stem, ext = os.path.splitext(out_f)
         if ext.lower() in lossy_formats:
             out_f = stem + ".png"

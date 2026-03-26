@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Node.js
+node_modules/
+.next/
+frontend/.env.local
+
+# Output
+output.png

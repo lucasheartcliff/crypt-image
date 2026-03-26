@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(.venv/bin/pip install:*)",
+      "Bash(.venv/bin/python main.py encode -i example/th.jpeg -o /tmp/test_output.png -f example/test_txt -k example/key.file)",
+      "Bash(.venv/bin/python main.py decode -i /tmp/test_output.png -o /tmp/test_decoded.txt -k example/key.file)",
+      "Read(//tmp/**)",
+      "Bash(.venv/bin/python -m pytest tests/ -v)",
+      "Bash(.venv/bin/python main.py encode -i example/th.jpeg -o /tmp/test_v2.png -f example/test_txt -k example/key.file)",
+      "Bash(.venv/bin/python main.py decode -i /tmp/test_v2.png -o /tmp/test_v2_decoded.txt -k example/key.file)",
+      "Bash(.venv/bin/python -c \"from backend.app.main import app; print\\('FastAPI app loaded successfully'\\)\")",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}
