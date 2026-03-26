@@ -1,4 +1,4 @@
-# Crypt Image
+# Snap Vault
 
 Hide encrypted messages inside images using AES-256 encryption and LSB steganography.
 
@@ -44,7 +44,7 @@ The cryptography and steganography modules are shared between the CLI, API, and 
 ## Project Structure
 
 ```
-crypt-image/
+snap-vault/
 ├── main.py                        # CLI entry point
 ├── src/
 │   ├── cryptography.py            # AES-256 + PBKDF2 + HMAC module
@@ -84,8 +84,8 @@ crypt-image/
 ### Option 1: Docker Compose (recommended)
 
 ```bash
-git clone https://github.com/lucasheartcliff/crypt-image.git
-cd crypt-image
+git clone https://github.com/lucasheartcliff/snap-vault.git
+cd snap-vault
 docker-compose up
 ```
 
