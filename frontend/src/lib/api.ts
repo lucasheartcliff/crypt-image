@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+// Empty string = relative URLs, routed through Next.js /api/* rewrites.
+// Set NEXT_PUBLIC_API_URL to override (e.g. direct backend access).
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "";
 
 export async function encode(
   image: File,
