@@ -6,6 +6,22 @@ Hide encrypted messages inside images using AES-256 encryption and LSB steganogr
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11+-green.svg)](https://www.python.org/)
 [![Ko-fi](https://img.shields.io/badge/Support-Ko--fi-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/lucasheartcliff)
 
+## Table of Contents
+
+- [Features](#features)
+- [Architecture](#architecture)
+- [Project Structure](#project-structure)
+- [Quick Start](#quick-start)
+- [CLI Usage](#cli-usage)
+- [Web UI](#web-ui)
+- [API Reference](#api-reference)
+- [Security](#security)
+- [How It Works](#how-it-works)
+- [Testing](#testing)
+- [Docker](#docker)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Features
 
 - **AES-256 encryption** with PBKDF2 key derivation (600,000 iterations)
