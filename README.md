@@ -4,6 +4,23 @@ Hide encrypted messages inside images using AES-256 encryption and LSB steganogr
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11+-green.svg)](https://www.python.org/)
+[![Ko-fi](https://img.shields.io/badge/Support-Ko--fi-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/lucasheartcliff)
+
+## Table of Contents
+
+- [Features](#features)
+- [Architecture](#architecture)
+- [Project Structure](#project-structure)
+- [Quick Start](#quick-start)
+- [CLI Usage](#cli-usage)
+- [Web UI](#web-ui)
+- [API Reference](#api-reference)
+- [Security](#security)
+- [How It Works](#how-it-works)
+- [Testing](#testing)
+- [Docker](#docker)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 
@@ -339,7 +356,7 @@ docker-compose up --build
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `NEXT_PUBLIC_API_URL` | `http://localhost:8000` | Backend URL for frontend |
+| `BACKEND_URL` | `http://localhost:8000` | Backend URL for Next.js API proxy |
 | `PYTHONPATH` | `/app` | Python module resolution path |
 
 ## Contributing
