@@ -4,7 +4,6 @@ Hide encrypted messages inside images using AES-256 encryption and LSB steganogr
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11+-green.svg)](https://www.python.org/)
-[![CI](https://github.com/lucasheartcliff/crypt-image/actions/workflows/ci.yml/badge.svg)](https://github.com/lucasheartcliff/crypt-image/actions/workflows/ci.yml)
 
 ## Features
 
