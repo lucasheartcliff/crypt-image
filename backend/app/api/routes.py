@@ -91,8 +91,12 @@ async def decode(
         text = steg.decode_text()
     except IntegrityError:
         raise HTTPException(status_code=400, detail="Decryption failed: wrong key or corrupted data")
+    except UnicodeDecodeError:
+        raise HTTPException(status_code=400, detail="Failed to decode text. The password might be wrong, or the data is not valid text.")
     except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Decode error: {str(e)}")
+        if "codec can't decode" in str(e):
+            raise HTTPException(status_code=400, detail="Failed to decode text. The password might be wrong, or the image may not contain hidden data.")
+        raise HTTPException(status_code=400, detail=f"Failed to extract data. The image might not contain a valid secret. (details: {str(e)})")
 
     return DecodeResponse(text=text)
 

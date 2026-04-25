@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Crypt Image - Steganography Tool",
+  title: "Snap Vault - Steganography Tool",
   description: "Encrypt and hide data inside images using steganography",
 };
 
@@ -17,7 +17,7 @@ export default function RootLayout({
         <nav className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-sm">
           <div className="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
             <a href="/" className="text-xl font-bold text-primary-400">
-              Crypt Image
+              Snap Vault
             </a>
             <div className="flex gap-4">
               <a
